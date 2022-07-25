@@ -1,9 +1,15 @@
 const mongoose=require("mongoose");
+const Users =require("../Database/Users");
+const Blogs=require("../Database/Blogs");
 
 
 const likesSchema=new mongoose.Schema({
-    user_id:mongoose.Types.ObjectId,
-    blog_id:mongoose.Types.ObjectId,
+    user_id:{
+        type:mongoose.Types.ObjectId,
+        ref:Users},
+    blog_id:{
+        type:mongoose.Types.ObjectId,
+        ref:Blogs},
     emoji:"",
 })
 

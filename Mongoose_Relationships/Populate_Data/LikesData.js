@@ -14,16 +14,20 @@ async function LikesData(count)
     for(var i=0;i<count;i++)
     {
         const like={
-            blog_id:blogs[Math.floor(Math.random()*25)]._id,
-            user_id:users[Math.floor(Math.random()*52)]._id,
+            blog_id:blogs[Math.floor(Math.random()*50)]._id,
+            user_id:users[Math.floor(Math.random()*25)]._id,
             emoji:faker.internet.emoji()
         }
         await Likes.create(like);
     }
 }
-
+async function deleteLikes()
+{
+    await Likes.deleteMany();
+}
 connectDatabase()
 .then(()=>
 {
-    LikesData(100);
+   LikesData(100);
+   //deleteLikes();
 })

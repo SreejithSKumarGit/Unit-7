@@ -12,6 +12,7 @@ async function UsersData(count)
         const user={
             name:faker.name.firstName()+" "+faker.name.lastName(),
             email:faker.internet.email(),
+            avatar:faker.image.avatar(),
             social_profile:{
                 linkedIn:faker.internet.email(),
                 facebook:faker.internet.email(),
@@ -27,23 +28,21 @@ async function UsersData(count)
                     pincode:faker.random.numeric(),
                 }
             ],
-            blog_id:[
-                {
-                    id:blogs[Math.floor(Math.random()*25)]._id
-                },
-                {
-                    id:blogs[Math.floor(Math.random()*25)]._id
-                }
-            ]
 
         }
         await Users.create(user);
     }
 }
 
+async function deleteUserData()
+{
+    await Users.deleteMany();
+}
+
 
 connectDatabase()
 .then(()=>
 {
-    UsersData(50);
+    UsersData(25);
+    //deleteUserData();
 })

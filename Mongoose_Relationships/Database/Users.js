@@ -4,6 +4,8 @@ const mongoose=require("mongoose");
 const usersSchema= new mongoose.Schema({
     name:String,
     email:String,
+    avatar:String,
+    password:String,
     social_profile:{
         linkedIn:String,
         facebook:String,
@@ -17,10 +19,6 @@ const usersSchema= new mongoose.Schema({
         State:String,
         pincode:Number
     }],
-    blog_id:[
-        {id:mongoose.Types.ObjectId}   
-    ]
-
 });
 
 const Users=mongoose.model("User",usersSchema);

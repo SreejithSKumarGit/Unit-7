@@ -1,10 +1,11 @@
 const Blogs=require("../Database/Blogs");
+const Users=require("../Database/Users");
 
 async function fetchAllBlogs(req,res,next)
 {
-    const data =await Blogs.find();
+    const data =await Blogs.find().populate("user");
 
-    return res.send(data);
+    return res.send({data:data});
 }
 
 async function createBlogs(req,res,next)
